@@ -7,13 +7,8 @@ unset($_REQUEST['callback']);
 
 $json = json_encode($_REQUEST);
 
-// TODO: This should extract the base-level domain
-//
-// Example:
-//   www.example.com -> example.com
-//
-
-$base_domain = $_SERVER['SERVER_NAME'];
+$domain_parts = explode('.', $_SERVER['SERVER_NAME']);
+$base_domain = array_slice($doimain_parts, -2);
 
 ?>
 
