@@ -1,4 +1,4 @@
-jsonpi-jquery
+jquery-jsonpi
 =============
 
 jQuery plugin that enables the 'jsonpi' dataType parameter for $.ajax.
@@ -56,13 +56,20 @@ which is loaded inside the iframe:
     </body>
 </html>
 ```
+If the parent document has the same ```document.domain```, the iframe can execute the stored callback on the parent's window object.
 
 Requirements
 ------------
 
 The requesting page must have the same document.domain declaration in its ```<head>```.
 
+Caveats
+---------
+
+* Can cause "click" sound effect in older browsers (IE)
+* Can cause address bar loading animation in some browsers
+
 Authors
 -------
 
-Ben Vinegar
+Ben Vinegar ([@bentlegen](http://twitter.com/bentlegen))
