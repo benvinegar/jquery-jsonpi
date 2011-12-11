@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JSONPI Example</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+        <script type="text/javascript" src="jquery.jsonpi.js"></script>
+    </head>
+
+    <body>
+        <h1>JSONPI Example</h1>
+
+        <p>This page initiates a JSONPI request using the bundled jQuery transport. Check the console for output.</p>
+
+        <script>
+            $(function() {
+                $.ajax({
+                    url: 'echo.php',
+                    type: 'GET',
+                    dataType: 'jsonpi', // <---
+                    params: { 'foo': 'bar' },
+                    success: function(response) {
+                        console.log('Success');
+                        console.log(response);
+                    }
+                });
+            });
+        </script>
+    </body>
+
+</html>
