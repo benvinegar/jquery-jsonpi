@@ -1,5 +1,10 @@
 <?php
 
+if (! isset($_GET['callback'])) {
+    header('HTTP/1.0 400 Bad Request', true, 400);
+    exit;
+}
+
 header('Content-type: text/html');
 
 $callback = $_GET['callback'];
