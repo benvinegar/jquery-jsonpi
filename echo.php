@@ -20,11 +20,11 @@ $base_domain = $_SERVER['SERVER_NAME'];
 <!DOCTYPE html>
 <html>
     <head>
-        <script>// document.domain = '<?= $base_domain ?>';</script>
+        <script>// document.domain = '<?php echo $base_domain ?>';</script>
     </head>
     <body>
         <script>
-            <?= "window.parent.$callback($json)" ?>
+            window.parent.<?php echo $callback; ?>(<?php echo $json; ?>)
         </script>
     </body>
 </html>
