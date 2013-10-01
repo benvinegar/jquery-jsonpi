@@ -38,8 +38,8 @@
                     window[jsonpCallback] = previous;
                 };
 
-                iframe = $('<iframe>')
-                    .attr('name', name)
+                iframe = $('<iframe name="'+name+'">') //ie7 bug fix
+                    //.attr('name', name)
                     .appendTo('head');
 
                 form = $('<form>')
