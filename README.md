@@ -58,6 +58,20 @@ which is loaded inside the iframe:
 ```
 If the parent document has the same ```document.domain```, the iframe can execute the stored callback on the parent's window object.
 
+
+Demo
+----
+
+This repository includes a NodeJS server that demonstrates jquery-jsonpi in action.
+
+```
+$ cd jquery-jsonpi
+$ npm install
+$ node server
+```
+
+Then visit localhost:3000 and open your browser's developer tools to see what's going on.
+
 Requirements
 ------------
 

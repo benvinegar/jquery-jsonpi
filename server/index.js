@@ -10,8 +10,15 @@ var app = express();
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.join(__dirname, '..')));
+app.use(express.static(path.join(__dirname, 'static')));
+
+// One-off static file serving for jquery.jsonpi.js, so it can
+// stay in project root
+app.get('/jquery.jsonpi.js', function (req, res) {
+  res.sendfile(path.join(__dirname, '../jquery.jsonpi.js'));
+});
 
 app.get('/echo', function(req, res){
   res.set('Content-Type', 'text/html');
