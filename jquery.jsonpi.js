@@ -6,19 +6,23 @@
  * http://github.com/benvinegar/jquery-jsonpi
  */
 
+/*global jQuery*/
+/*eslint-env browser*/
+/*eslint quotes:0*/
 (function($) {
-    $.ajaxTransport('jsonpi', function(opts, originalOptions, jqXHR) {
-        var jsonpCallback = opts.jsonpCallback = 
+    'use strict';
+    $.ajaxTransport('jsonpi', function(opts) {
+        var jsonpCallback = opts.jsonpCallback =
                 jQuery.isFunction(opts.jsonpCallback) ? opts.jsonpCallback() : opts.jsonpCallback,
             previous = window[jsonpCallback],
-            replace = "$1" + jsonpCallback + "$2",
             url = opts.url;
 
 
-        if (opts.type == 'GET')
+        if (opts.type === 'GET') {
             opts.params[opts.jsonp] = jsonpCallback;
-        else
+        } else {
             url += (/\?/.test( url ) ? "&" : "?") + opts.jsonp + "=" + jsonpCallback;
+        }
 
         return {
             send: function(_, completeCallback) {
@@ -38,7 +42,7 @@
                     window[jsonpCallback] = previous;
                 };
 
-                iframe = $('<iframe name="'+name+'">') //ie7 bug fix
+                iframe = $('<iframe name="' + name + '">') //ie7 bug fix
                     //.attr('name', name)
                     .appendTo('head');
 
@@ -46,7 +50,7 @@
                     .attr('method', opts.type) // GET or POST
                     .attr('action', url)
                     .attr('target', name);
-                
+
                 $.each(opts.params, function(k, v) {
                     $('<input>')
                         .attr('type', 'hidden')
@@ -54,7 +58,8 @@
                         .attr('value', v)
                         .appendTo(form);
                 });
-                form.appendTo('body').submit();
+                form.appendTo('body');
+                form.submit();
             },
             abort: function() {
                 // TODO

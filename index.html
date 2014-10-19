@@ -2,10 +2,10 @@
 <html>
     <head>
         <title>JSONPI Example</title>
+        <script>document.domain='localhost'</script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
         <script type="text/javascript" src="jquery.jsonpi.js"></script>
     </head>
-
     <body>
         <h1>JSONPI Example</h1>
 
@@ -14,7 +14,7 @@
         <script>
             $(function() {
                 $.ajax({
-                    url: 'echo.php',
+                    url: '/echo',
                     type: 'GET',
                     dataType: 'jsonpi', // <---
                     params: { 'foo': 'bar' },

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>document.domain = '{{host}}';</script>
+    </head>
+    <body>
+        <script>
+            window.parent.{{callback}}({{{response}}});
+        </script>
+    </body>
+</html>
