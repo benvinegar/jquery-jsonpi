@@ -4,7 +4,7 @@ jquery-jsonpi
 jQuery plugin that enables the 'jsonpi' dataType parameter for $.ajax.
 
 
-What the hell is JSONPI
+What the hell is JSONPI?
 -----------------------
 
 A pattern for making AJAX-like requests across subdomains. Since browsers block XmlHttpRequest across 
@@ -59,6 +59,18 @@ which is loaded inside the iframe:
 If the parent document has the same ```document.domain```, the iframe can execute the stored callback on the parent's window object.
 
 
+### Requirements
+
+
+The requesting page must have the same document.domain declaration in its ```<head>```.
+
+### Caveats
+
+* Can cause "click" sound effect in older browsers (IE)
+* Can cause address bar loading animation in some browsers
+* This will create an iframe per-request; [they're not cheap](http://www.stevesouders.com/blog/2009/06/03/using-iframes-sparingly/)
+
+
 Demo
 ----
 
@@ -70,18 +82,14 @@ $ npm install
 $ node server
 ```
 
-Then visit localhost:3000 and open your browser's developer tools to see what's going on.
+Then visit [http://localhost:3000](http://localhost:3000) and open your browser's developer tools to see what's going on.
 
-Requirements
-------------
+Should you actually use this?
+-----------------------------
 
-The requesting page must have the same document.domain declaration in its ```<head>```.
+*Probably not*. Almost everyone is better off using [CORS](http://www.html5rocks.com/en/tutorials/cors/), or if browser support is a concern, the [XDomain](https://github.com/jpillora/xdomain) library.
 
-Caveats
----------
-
-* Can cause "click" sound effect in older browsers (IE)
-* Can cause address bar loading animation in some browsers
+The "JSONPI" pattern was devised during an age when CORS was just a twinkle in spec implementers eyes. Today, it's not much more than a "gee whiz neato" project that can teach you some fun things about `document.domain` and iframes.
 
 Authors
 -------
